@@ -16,26 +16,13 @@ public class EducationInstitutionController {
     @Autowired
     private EducationInstitutionService service;
 
-@PostMapping("/create")
-    public ResponseEntity<EducationInstitution> create(@RequestBody EducationInstitution educationInstitution){
-    return ResponseEntity.status(HttpStatus.CREATED).body(service.save(educationInstitution));
-}
+
     @GetMapping("/")
     public ResponseEntity<List<EducationInstitution>> getAll(){
         List<EducationInstitution> educationInstitutions = service.findAll();
         return ResponseEntity.ok(educationInstitutions);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteProduct (@PathVariable int id){
-        service.delete(id);
-    }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<EducationInstitution> updateProduct(@RequestBody EducationInstitution educationInstitution, @PathVariable int id){
-        service.findOne(id);
-        educationInstitution.setId(id);
-        return ResponseEntity.status(HttpStatus.OK).body(service.save(educationInstitution));
-    }
 
 }

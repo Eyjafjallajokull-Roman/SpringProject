@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-
+@AllArgsConstructor
 @Entity
 @ToString
 @Table(name = "education_institution")

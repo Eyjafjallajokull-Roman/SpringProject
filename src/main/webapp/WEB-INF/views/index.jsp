@@ -20,7 +20,7 @@
         <div style="margin: 15px; font-size: 14px; color: green;" class="navbar-header">Spring MVC - Logos</div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">All EI</a></li>
-            <li><a href="/product/create">new EI</a></li>
+            <li><a href="/institution/create">new EI</a></li>
         </ul>
     </div>
 </nav>
@@ -49,7 +49,7 @@
                 <td>${institut.numberOfStudents}</td>
                 <td>${institut.numberOfUniversity}</td>
                 <td>${institut.addressUniversity}</td>
-                <td><a href="/edit?id=${institut.id}">Edit</a></td>
+                <td><a href="/institution/update/${institut.id}">Edit</a></td>
                 <td><a href="/institution/delete/${institut.id}">Delete</a></td>
             </tr>
         </c:forEach>
