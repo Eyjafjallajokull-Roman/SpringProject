@@ -1,5 +1,6 @@
 package com.example.SpringProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Table(name = "files")
 public class FileMultipart {
     @Id
+    @JsonIgnore
     @Column(name = "id")
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -26,7 +28,10 @@ public class FileMultipart {
     private long size;
     @Lob
     @Column(name = "data")
+    @JsonIgnore
     private byte[] data;
+
+    private String downloadUrl;
 
     public FileMultipart(String fileName, String fileType, long size, byte[] data) {
         this.fileName = fileName;

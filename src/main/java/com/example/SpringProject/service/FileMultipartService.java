@@ -12,5 +12,9 @@ public interface FileMultipartService {
 
     FileMultipart save(MultipartFile multipartFile) throws IOException;
 
-    FileMultipart findOne(long id);
+    FileMultipart findOne(String id);
+
+
+
+
 }

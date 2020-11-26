@@ -24,12 +24,14 @@ public class FileMultipartServiceImpl implements FileMultipartService {
     @Override
     public FileMultipart save(MultipartFile multipartFile) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename()); //clean path - назва самого файлу, getOriginalFileName його шлях повний
-        FileMultipart fileMultipart = new FileMultipart("", multipartFile.getContentType(), multipartFile.getSize(), multipartFile.getBytes());
+        FileMultipart fileMultipart = new FileMultipart(fileName, multipartFile.getContentType(), multipartFile.getSize(), multipartFile.getBytes());
         return fileMultipartRepository.save(fileMultipart);
     }
 
     @Override
-    public FileMultipart findOne(long id) {
+    public FileMultipart findOne(String id) {
         return fileMultipartRepository.findById(id).orElseThrow(RuntimeException::new);
     }
+
+
 }
