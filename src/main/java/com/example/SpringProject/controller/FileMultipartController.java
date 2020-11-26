@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -45,10 +46,16 @@ public class FileMultipartController {
                 .body(new ByteArrayResource(fileMultipart.getData()));
     }
 
-//    @PostMapping("/uploadMultipleFile")
-//    public List<FileMultipart> uploadMultipleFile(@RequestParam("files") List<MultipartFile> multipartFiles ){
-//        List<FileMultipart> fileMultiparts =
-// }
+   @PostMapping("/uploadMultipleFiles")
+    public String uploadMultipleFiles(@RequestParam("file") MultipartFile[] multipartFiles){
+        Arrays.asList(multipartFiles).forEach(multipartFile -> {
+            try {
+                uploadFile(multipartFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+   return "good" ;}
 
     private String buildDownload(String id){
        return ServletUriComponentsBuilder
